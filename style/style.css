@@ -1,0 +1,252 @@
+/* variables declaration */
+:root{
+    --bg-color: hsl(0, 0%, 11%);
+    --bg-color1: hsl(0, 0%, 2%);
+    --text-color: hsl(215, 80%, 90%);
+    --text-header-color:hsla(194, 100%, 50%);
+    --seen-border: hsl(48, 100%, 50%);
+}
+/* resetting all selectors */
+*{
+    margin: 0;
+    padding: 0;
+
+    box-sizing: border-box;
+
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+body{
+    background: var(--bg-color);
+}
+/* header tags */
+#header{
+    z-index: 2;
+    position: fixed;
+
+    display: flex;
+    justify-content: center;
+
+    width: 100%;
+    height: 10vh;
+
+    background: linear-gradient(180deg, var(--bg-color1),var(--bg-color));
+
+    text-align: center;
+    
+}
+#header .container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    width: 100%;
+}
+#logo-name{
+    padding: 0 0 0 2%;
+
+    text-align: left;
+
+    color: var(--text-header-color);
+    font-size: 250%;
+    font-weight:600;
+
+    width: 100%;
+}
+#menu-button{
+    display: none;
+    color: var(--text-color);
+}
+#nav-menu{
+    display: flex;
+    justify-content: flex-end;
+    gap: 5%;
+
+    padding: 0 2% 0 0;
+
+    width: 100%;
+}
+.nav-link{
+    color: var(--text-color);
+
+    text-decoration: none;
+    font-weight: 100;
+}
+.nav-link:hover{
+    color: white;
+}
+
+/* making the navbar responsive */
+@media (min-width: 250px){/*mobile first*/
+    #nav-menu{
+        justify-content: center;
+    }
+    #menu-button{
+        display: block;
+    }
+    .nav-link{
+        display: none;
+    }
+}
+@media (min-width: 321px){ /*after that the menu can go right*/
+    #nav-menu{
+        justify-content: flex-end;
+    }
+}
+@media (min-width: 550px){/*after that the words can be displayed*/
+    #menu-button{
+        display: none;
+    }
+    .nav-link{
+        display: block;
+    }
+}
+
+
+/* main content of the page */
+#main-content{
+    z-index: 1;
+
+    position: relative;
+    top: 10vh;
+}
+#recommend-movie{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+
+    margin: 0 0 10vh 0 ;
+
+    height:500px;
+
+    color: var(--text-color);
+    font-size: 16px;
+
+    background: linear-gradient(hsla(0, 0%, 11%, 0.50),hsla(0, 0%, 11%, 0.50)) ,url("https://occ-0-2794-2219.1.nflxso.net/dnm/api/v6/E8vDc_W8CLv7-yMQu8KMEC7Rrr8/AAAABQ_M-MEoHqSy3NgG8XMRWaTwDvgfh7yKYi_UJCn8dw2KfpwyeRtcnkTssyuiko6FYsiJyFyUuKhMnp9I4mBiCXkyG_K9.jpg?r=8ad");
+    background-size: cover;
+}
+
+#recommend-movie .container{
+    position: relative;
+    top: 15%;
+    margin: 0 0 0 10px;
+
+    width: 80%;
+
+    text-align: left;
+}
+
+#recommend-movie .title{
+    font-size: 40px;
+    font-family: sans-serif;
+    font-weight: 800;
+}
+
+#recommend-movie .description{
+    max-width: 400px;
+    
+    text-align: justify;
+
+    font-family: sans-serif;
+    line-height: 1.3em;
+}
+/*When the screen is small, we can hide most part of the description
+    so it can be prettier and not polluted*/
+@media(min-width: 250px){
+    #recommend-movie .container .description{
+        display: none;
+    }
+    #recommend-movie .container #minimal-description{
+        display: block;
+
+        text-align: left;
+    }
+}
+@media(min-width: 550px){
+    #recommend-movie .container .description{
+        display: block;
+    }
+    #recommend-movie .container #minimal-description{
+        display: none;
+    }
+}
+#recommend-movie .container .nav-buttons{
+    display: flex;
+    gap: 1em 15px;
+
+    max-width: 400px;
+
+    margin: 20px 0;
+}
+#recommend-movie .container .nav-buttons .button{ /*play now and more info buttons*/
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+
+    width: 50%;
+    max-width: 150px;
+
+    padding: 10px 10px;
+
+    border: none;
+
+    color: var(--text-color);
+    background: hsla(194, 100%, 50%, 0.59);
+
+    cursor:pointer;
+    
+    transition: 0.3s ease all;
+}
+@media (min-width: 250px){
+    #recommend-movie .container .nav-buttons{
+        flex-direction: column;
+    }
+    #recommend-movie .container .nav-buttons .button{
+        width: 70%;
+    }
+}
+@media (min-width: 300px){
+    #recommend-movie .container .nav-buttons{
+        flex-direction: row;
+    }
+    #recommend-movie .container .nav-buttons .button{
+        width: 50%;
+
+        padding: 10px 20px;
+    }
+}
+.button i{ /*styling the icons*/
+    font-size: 22px;
+}
+.button:hover{ 
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+#recommend-movie .button{
+    border-radius: 2px;
+
+    font-size: 14px;
+    font-family: sans-serif;
+    font-weight: 700;
+}
+/*making the recommend-movie section responsive*/
+
+
+/* we want to specify a width
+    and a height for each picture 
+    
+    That's why we create another selector*/
+.carousel-docs{
+    z-index: 1;
+
+    position: relative;
+    top: 2vh;
+}
+
+.image-box{
+    display: block;
+
+    height: 27em; /*sets the same height for every picture inside the carousel*/
+    width: 100%;
+}
